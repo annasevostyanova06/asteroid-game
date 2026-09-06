@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asteroid Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+
+    <div class="fade-overlay" id="fadeOverlay"></div>
+
+    <canvas id="spaceCanvas"></canvas>
+    
+
+    <div id="menuScreen" class="screen active">
+        <div class="menu">
+            <h1>ASTEROID GAME</h1>
+            <div id="userInfo" style="color:rgba(255,255,255,0.4); font-size:24px; margin-bottom:10px;"></div>
+            <button class="btn" onclick="startGame()">NEW GAME</button>
+            <button class="btn" onclick="showRecords()">RECORDS</button>
+            <button class="btn" onclick="showAuth()">LOG IN</button>
+            <button class="btn" onclick="logout()" id="logoutBtn" style="display:none;">LOG OUT</button>
+        </div>
+    </div>
+
+ 
+    <div id="authScreen" class="screen">
+        <div class="auth-content">
+            <h2 style="font-size:56px; color:#ffffff; letter-spacing:4px; margin-bottom:10px;">LOG IN</h2>
+            <p style="color:rgba(255,255,255,0.2); font-size:18px; margin-bottom:20px; text-align:center; max-width:400px;">
+                LOGIN: 3-20 characters<br>
+                PASSWORD: 4-20 characters<br>
+                LETTERS, NUMBERS, _ . -
+            </p>
+            <input class="auth-input" id="authUsername" placeholder="USERNAME" type="text" maxlength="20">
+            <input class="auth-input" id="authPassword" placeholder="PASSWORD" type="password" maxlength="20">
+            <button class="btn" onclick="handleLogin()" style="min-width:300px;">LOG IN</button>
+            <button class="btn" onclick="handleRegister()" style="min-width:300px;">REGISTER</button>
+            <button class="btn" onclick="showGuest()" style="min-width:300px; border-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.3);">CONTINUE AS GUEST</button>
+            <button class="btn" onclick="backToMenu()" style="min-width:300px; border-color:rgba(255,255,255,0.2); color:rgba(255,255,255,0.5);">BACK</button>
+        </div>
+    </div>
+
+    <div id="recordsScreen" class="screen">
+        <div class="records-content">
+            <h2 style="font-size:56px; color:#ffffff; letter-spacing:4px; margin-bottom:30px;">RECORDS</h2>
+            <div id="recordsList" style="color:#ffffff; font-size:28px; text-align:left; width:100%; max-width:400px; margin-bottom:30px;"></div>
+            <button class="btn" onclick="backToMenu()" style="min-width:300px;">BACK</button>
+        </div>
+    </div>
+
+    <div id="gameScreen" class="screen">
+        <div class="lives-display" id="livesDisplay"></div>
+        <div class="score-display">SCORE: <span id="score">0</span></div>
+        <div id="gameOverScreen">
+            <div class="gameover-content">
+                <h1>GAME OVER</h1>
+                <p>SCORE: <span id="finalScore">0</span></p>
+                <button class="btn" onclick="backToMenu()">MAIN MENU</button>
+                <button class="btn" onclick="restartGame()">PLAY AGAIN</button>
+            </div>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+
+</html>
